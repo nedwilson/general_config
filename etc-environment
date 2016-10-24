@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - start"
+
+launchctl setenv IH_SHOW_CODE		darktower
+launchctl setenv IH_SHOW_ROOT		/Volumes/raid_vol01/work/darktower
+launchctl setenv IH_SHOW_CFG_PATH	/Volumes/raid_vol01/work/darktower/SHARED/lib/darktower.cfg
+
+if [ -x /usr/libexec/path_helper ]; then
+    export PATH=""
+    eval `/usr/libexec/path_helper -s`
+    launchctl setenv PATH $PATH
+fi
+
+osascript -e 'tell app "Dock" to quit'
+
+syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - complete"

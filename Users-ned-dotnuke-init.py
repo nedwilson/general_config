@@ -17,7 +17,7 @@ except KeyError:
     pass
     
 # separate working directory for development code
-g_global_dev_pipeline = "/Volumes/raid_vol01/work/SHARED/src/nuke_hub"
+g_global_dev_pipeline = "/Volumes/raid_vol01/shows/SHARED/src/nuke_hub"
 
 if os.environ.get('NUKE_DEVEL'):
     print "INFO: DEV Mode Active."

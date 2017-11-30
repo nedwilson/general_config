@@ -1,0 +1,12 @@
+[Unit]
+Description=Nuke Frameserver Slave
+After=network.target
+
+[Service]
+Type=simple
+User=render
+ExecStart=/usr/local/bin/nuke-frameserver.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

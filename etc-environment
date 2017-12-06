@@ -5,11 +5,11 @@ set -e
 syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - start"
 
 launchctl setenv FN_DISABLE_LICENSE_DIALOG		TRUE
-launchctl setenv IH_SHOW_CODE		skyscraper
-launchctl setenv IH_SHOW_ROOT		/Volumes/raid_vol01/shows/skyscraper
-launchctl setenv IH_SHOW_CFG_PATH	/Volumes/raid_vol01/shows/skyscraper/SHARED/lib/skyscraper.cfg
-launchctl setenv IH_SHOW_CFG_LUT	/Volumes/raid_vol01/shows/skyscraper/SHARED/lut/FotokemSpinel_showLUT.cube
-launchctl setenv PYTHONPATH		/Volumes/raid_vol01/shows/SHARED/lib/python
+launchctl setenv IH_SHOW_CODE		spinel
+launchctl setenv IH_SHOW_ROOT		/Volumes/raid_vol01/shows/spinel
+launchctl setenv IH_SHOW_CFG_PATH	/Volumes/raid_vol01/shows/spinel/SHARED/lib/spinel.cfg
+launchctl setenv IH_SHOW_CFG_LUT	/Volumes/raid_vol01/shows/spinel/SHARED/lut/FotokemSpinel_showLUT.cube
+launchctl setenv PYTHONPATH	/Volumes/raid_vol01/shows/SHARED/lib/python
 launchctl setenv NUKE_INTERACTIVE	1
 if [ -x /usr/libexec/path_helper ]; then
     export PATH=""

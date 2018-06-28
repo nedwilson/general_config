@@ -4,13 +4,17 @@ set -e
 
 syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - start"
 
-launchctl setenv FN_DISABLE_LICENSE_DIALOG		TRUE
-launchctl setenv IH_SHOW_CODE		spinel
-launchctl setenv IH_SHOW_ROOT		/Volumes/raid_vol01/shows/spinel
-launchctl setenv IH_SHOW_CFG_PATH	/Volumes/raid_vol01/shows/spinel/SHARED/lib/spinel.cfg
-launchctl setenv IH_SHOW_CFG_LUT	/Volumes/raid_vol01/shows/spinel/SHARED/lut/FotokemSpinel_showLUT.cube
-launchctl setenv PYTHONPATH	/Volumes/raid_vol01/shows/SHARED/lib/python
-launchctl setenv NUKE_INTERACTIVE	1
+launchctl setenv OPTICAL_FLARES_PATH            "/Library/Application Support/Optical Flares"
+launchctl setenv NUKE_INTERACTIVE               1
+launchctl setenv FN_DISABLE_LICENSE_DIALOG      TRUE
+launchctl setenv NUKE_USE_FIXED_UPDATE          1
+launchctl setenv FN_UPDATE_OVERRIDE_FPS         30
+launchctl setenv IH_SHOW_CODE                   goosebumps2
+launchctl setenv IH_SHOW_ROOT                   /Volumes/raid_vol01/shows/goosebumps2
+launchctl setenv IH_SHOW_CFG_PATH               /Volumes/raid_vol01/shows/goosebumps2/SHARED/lib/goosebumps2.cfg
+launchctl setenv IH_SHOW_CFG_LUT                /Volumes/raid_vol01/shows/goosebumps2/SHARED/lut/AS03_ALCAWG_to_sRGB_super.cube
+launchctl setenv PYTHONPATH                     /Volumes/raid_vol01/shows/SHARED/lib/python:/Volumes/raid_vol01/shows/goosebumps2/SHARED/shotgun/install/core/python		
+
 if [ -x /usr/libexec/path_helper ]; then
     export PATH=""
     eval `/usr/libexec/path_helper -s`

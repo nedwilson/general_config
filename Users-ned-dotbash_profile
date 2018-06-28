@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export OPTICAL_FLARES_PATH="/Library/Application Support/Optical Flares"
+export NUKE_INTERACTIVE=1
+export FN_DISABLE_LICENSE_DIALOG=TRUE
+export NUKE_USE_FIXED_UPDATE=1
+export FN_UPDATE_OVERRIDE_FPS=30
+export IH_SHOW_CODE=goosebumps2
+export IH_SHOW_ROOT=/Volumes/raid_vol01/shows/goosebumps2
+export IH_SHOW_CFG_PATH=/Volumes/raid_vol01/shows/goosebumps2/SHARED/lib/goosebumps2.cfg
+export IH_SHOW_CFG_LUT=/Volumes/raid_vol01/shows/goosebumps2/SHARED/lut/AS03_ALCAWG_to_sRGB_super.cube
+export PYTHONPATH=/Volumes/raid_vol01/shows/SHARED/lib/python:/Volumes/raid_vol01/shows/goosebumps2/SHARED/shotgun/install/core/python
+

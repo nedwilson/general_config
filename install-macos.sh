@@ -36,6 +36,14 @@ else
 	echo "Warning: $HOME/.nuke/init.py exists."
 fi
 
+if [ ! -e $HOME/.bash_profile ]; then
+    echo "Creating $HOME/.bash_profile."
+    cp -v ./Users-ned-dotbash_profile $HOME/.bash_profile
+    chmod 775 $HOME/.bash_profile
+else
+    echo "Warning: $HOME/.bash_profile exists."
+fi
+
 if [ ! -e $HOME/.nuke/Python/Startup/init.py ]; then
 	echo "Creating $HOME/.nuke/Python/Startup/init.py."
 	mkdir -p $HOME/.nuke/Python/Startup

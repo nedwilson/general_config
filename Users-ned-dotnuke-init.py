@@ -20,11 +20,16 @@ try:
 except KeyError:
     pass
 
-g_global_root = os.path.dirname(g_show_root)
-g_global_nuke_pipeline = os.path.join(g_global_root, "SHARED", "lib", "nuke", "pipeline")
-g_global_gizmos = os.path.join(g_global_root, "SHARED", "lib", "nuke", "gizmos")
-g_show_nuke_pipeline = os.path.join(g_show_root, "SHARED", "lib", "nuke", "pipeline")
-g_show_gizmos = os.path.join(g_show_root, "SHARED", "lib", "nuke", "gizmos")
+if b_ih_pipeline:
+    g_global_root = os.path.dirname(g_show_root)
+    g_global_nuke_pipeline = os.path.join(g_global_root, "SHARED", "lib", "nuke", "pipeline")
+    g_global_gizmos = os.path.join(g_global_root, "SHARED", "lib", "nuke", "gizmos")
+    g_show_nuke_pipeline = os.path.join(g_show_root, "SHARED", "lib", "nuke", "pipeline")
+    g_show_gizmos = os.path.join(g_show_root, "SHARED", "lib", "nuke", "gizmos")
+else:
+    print "WARNING: Nuke is not operating inside an In-House Pipeline. Most likely this is due to environment variables not being configured."
+    for envkey in sorted(os.environ.keys()):
+        print "%s : %s"%(envkey, os.environ[envkey])
 
 def load_global_np():
     nuke.pluginAddPath(g_global_nuke_pipeline)
@@ -71,5 +76,3 @@ if b_ih_pipeline:
 # Ned Personal Customizations
 nuke.knobDefault("Read.mov.decoder", "mov64")
 nuke.knobDefault("Read.mov.mov64_decode_video_levels", "Video Range")
-nuke.knobDefault("Viewer.frame_increment", "16")
-nuke.knobDefault("RotoPaint.toolbox", "clone {{brush ltt 0} {clone ltt 0}}")  

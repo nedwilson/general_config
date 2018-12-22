@@ -4,13 +4,18 @@ set -e
 
 syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - start"
 
-launchctl setenv FN_DISABLE_LICENSE_DIALOG		TRUE
-launchctl setenv IH_SHOW_CODE		skyscraper
-launchctl setenv IH_SHOW_ROOT		/Volumes/raid_vol01/shows/skyscraper
-launchctl setenv IH_SHOW_CFG_PATH	/Volumes/raid_vol01/shows/skyscraper/SHARED/lib/skyscraper.cfg
-launchctl setenv IH_SHOW_CFG_LUT	/Volumes/raid_vol01/shows/skyscraper/SHARED/lut/FotokemSpinel_showLUT.cube
-launchctl setenv PYTHONPATH		/Volumes/raid_vol01/shows/SHARED/lib/python
-launchctl setenv NUKE_INTERACTIVE	1
+launchctl setenv HOUDINI_VERBOSE_ERROR		1
+launchctl setenv HOUDINI_DSO_ERROR		3
+launchctl setenv FN_UPDATE_OVERRIDE_FPS		30
+launchctl setenv NUKE_USE_FIXED_UPDATE		1
+launchctl setenv FN_DISABLE_LICENSE_DIALOG	TRUE
+launchctl setenv IH_SHOW_CODE			romeo
+launchctl setenv IH_SHOW_ROOT			/Volumes/romeo_primary/Shots
+launchctl setenv IH_SHOW_CFG_PATH		/Volumes/romeo_primary/Shots/SHARED/lib/romeo.cfg
+launchctl setenv IH_SHOW_CFG_LUT		
+launchctl setenv PYTHONPATH			/Volumes/romeo_primary/Shots/SHARED/lib/python:/Volumes/romeo_primary/Shots/SHARED/shotgun/install/core/python:/Volumes/romeo_primary/Shots/SHARED/lib/nuke/pipeline
+launchctl setenv NUKE_INTERACTIVE		1
+launchctl setenv OCIO				/Volumes/romeo_primary/Shots/SHARED/lib/ocio_configs/nuke-default/config.ocio
 if [ -x /usr/libexec/path_helper ]; then
     export PATH=""
     eval `/usr/libexec/path_helper -s`
@@ -20,3 +25,4 @@ fi
 osascript -e 'tell app "Dock" to quit'
 
 syslog -s -l warn "Set environment variables with /etc/environment $(whoami) - complete"
+

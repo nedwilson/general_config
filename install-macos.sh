@@ -4,6 +4,8 @@
 # only works with macOS.
 # will not overwrite existing .nuke/init.py or system files. copy manually in this case.
 
+SKEL='/System/Library/User Template/English.lproj'
+
 if [ ! -e /etc/environment ]; then
 	echo "Creating /etc/environment."
 	sudo cp -v ./etc-environment /etc/environment
@@ -44,3 +46,16 @@ if [ ! -e $HOME/.nuke/Python/Startup/init.py ]; then
 else
 	echo "Warning: $HOME/.nuke/Python/Startup/init.py exists."
 fi
+
+echo "Enabling launchctl services..."
+sudo launchctl enable system/environment
+sudo launchctl enable system/environment.user
+
+echo "Creating $SKEL/.nuke/init.py."
+sudo mkdir -p "${SKEL}/.nuke/"
+sudo mkdir -p "${SKEL}/.nuke/Python/Startup"
+sudo cp -v ./Users-ned-dotnuke-init.py "${SKEL}/.nuke/init.py"
+sudo chmod 775 "${SKEL}/.nuke/init.py"
+sudo cp -v ./Users-ned-dotnuke-Python-Startup-init.py "${SKEL}/.nuke/Python/Startup/init.py"
+sudo chmod 775 "${SKEL}/.nuke/Python/Startup/init.py"
+

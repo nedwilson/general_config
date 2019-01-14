@@ -21,10 +21,10 @@ except KeyError:
     pass
 
 g_global_root = os.path.dirname(g_show_root)
-g_global_nuke_pipeline = os.path.join(g_global_root, "SHARED", "lib", "nuke", "pipeline")
-g_global_gizmos = os.path.join(g_global_root, "SHARED", "lib", "nuke", "gizmos")
-g_show_nuke_pipeline = os.path.join(g_show_root, "SHARED", "lib", "nuke", "pipeline")
-g_show_gizmos = os.path.join(g_show_root, "SHARED", "lib", "nuke", "gizmos")
+g_global_nuke_pipeline = os.path.join(g_show_root, "SHARED", "lib", "nuke", "pipeline")
+g_global_gizmos = os.path.join(g_show_root, "SHARED", "lib", "nuke", "gizmos")
+g_show_nuke_pipeline = os.path.join(g_show_root, "SHARED", g_show_code, "lib", "nuke", "pipeline")
+g_show_gizmos = os.path.join(g_show_root, "SHARED", g_show_code, "lib", "nuke", "gizmos")
 
 def load_global_np():
     nuke.pluginAddPath(g_global_nuke_pipeline)
@@ -37,7 +37,7 @@ def load_show_gizmos():
 
 
 # separate working directory for development code
-g_global_dev_pipeline = "/Volumes/raid_vol01/shows/SHARED/src/nuke_hub"
+g_global_dev_pipeline = "/Users/ned/PycharmProjects/general_lib/nuke/pipeline"
 
 if os.environ.get('NUKE_DEVEL'):
     print "INFO: DEV Mode Active."

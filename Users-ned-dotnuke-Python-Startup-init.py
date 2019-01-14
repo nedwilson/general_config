@@ -18,8 +18,8 @@ except KeyError:
     pass
 
 if b_ih_pipeline:    
-    g_global_root = os.path.dirname(g_show_root)
-    g_global_hiero_pipeline = os.path.join(g_global_root, "SHARED", "lib", "nuke", "hiero")
+    # g_global_root = os.path.dirname(g_show_root)
+    g_global_hiero_pipeline = os.path.join(g_show_root, "SHARED", "lib", "nuke", "hiero")
     print "INFO: Adding plugin path: %s"%g_global_hiero_pipeline
     hiero.core.addPluginPath(g_global_hiero_pipeline)
 

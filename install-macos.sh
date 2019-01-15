@@ -40,7 +40,7 @@ fi
 
 if [ ! -e $HOME/.bash_profile ]; then
 	echo "Creating $HOME/.bash_profile."
-	cp -v ./Users-ned-dotbash_profile.py $HOME/.bash_profile
+	cp -v ./Users-ned-dotbash_profile $HOME/.bash_profile
 	chmod 775 $HOME/.bash_profile
 else
 	echo "Warning: $HOME/.bash_profile exists."

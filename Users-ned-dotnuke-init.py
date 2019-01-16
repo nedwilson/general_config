@@ -35,38 +35,41 @@ def load_show_np():
 def load_show_gizmos():
     nuke.pluginAddPath(g_show_gizmos)
 
-
 # separate working directory for development code
 g_global_dev_pipeline = "/Users/ned/PycharmProjects/general_lib/nuke/pipeline"
+g_global_dev_gizmos = "/Users/ned/PycharmProjects/general_lib/nuke/gizmos"
+g_show_dev_pipeline = "/Users/ned/PycharmProjects/show_lib/nuke/pipeline"
+g_show_dev_gizmos = "/Users/ned/PycharmProjects/show_lib/nuke/gizmos"
 
 if os.environ.get('NUKE_DEVEL'):
     print "INFO: DEV Mode Active."
     print "INFO: Adding plugin path: %s"%g_global_dev_pipeline
     nuke.pluginAddPath(g_global_dev_pipeline)
-    
+    print "INFO: Adding plugin path: %s"%g_global_dev_gizmos
+    nuke.pluginAddPath(g_global_dev_gizmos)
+    print "INFO: Adding plugin path: %s"%g_show_dev_pipeline
+    nuke.pluginAddPath(g_show_dev_pipeline)
+    print "INFO: Adding plugin path: %s"%g_show_dev_gizmos
+    nuke.pluginAddPath(g_show_dev_gizmos)
 else:
     # are we running inside the in-house pipeline?
-    if b_ih_pipeline:    
+    if b_ih_pipeline:
         print "INFO: Adding plugin path: %s"%g_global_nuke_pipeline
         rval = timeit.timeit(load_global_np, number=100)
         print rval
-
-# add the global gizmos directory
-if b_ih_pipeline:
-    print "INFO: Adding plugin path: %s"%g_global_gizmos
-    rval = timeit.timeit(load_global_gizmos, number=100)
-    print rval
-
-# add show-specific pipeline and gizmo directories
-if b_ih_pipeline:
-    if os.path.exists(g_show_nuke_pipeline):
-        print "INFO: Adding plugin path: %s"%g_show_nuke_pipeline
-        rval = timeit.timeit(load_show_np, number=100)
+        # add the global gizmos directory
+        print "INFO: Adding plugin path: %s"%g_global_gizmos
+        rval = timeit.timeit(load_global_gizmos, number=100)
         print rval
-    if os.path.exists(g_show_gizmos):
-        print "INFO: Adding plugin path: %s"%g_show_gizmos
-        rval = timeit.timeit(load_show_gizmos, number=100)
-        print rval 
+        # add show-specific pipeline and gizmo directories
+        if os.path.exists(g_show_nuke_pipeline):
+            print "INFO: Adding plugin path: %s"%g_show_nuke_pipeline
+            rval = timeit.timeit(load_show_np, number=100)
+            print rval
+        if os.path.exists(g_show_gizmos):
+            print "INFO: Adding plugin path: %s"%g_show_gizmos
+            rval = timeit.timeit(load_show_gizmos, number=100)
+            print rval
 
 # Ned Personal Customizations
 nuke.knobDefault("Read.mov.decoder", "mov64")

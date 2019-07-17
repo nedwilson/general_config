@@ -61,7 +61,7 @@ sudo launchctl enable system/environment.user
 
 echo "Creating $SKEL/.nuke/init.py."
 sudo mkdir -p "${SKEL}"/.nuke/Python/Startup
-sudo chmod 700 -R "${SKEL}"/.nuke
+sudo chmod -R 700 "${SKEL}"/.nuke
 sudo cp -v ./Users-ned-dotnuke-init.py "${SKEL}"/.nuke/init.py
 sudo chmod 700 "${SKEL}"/.nuke/init.py
 sudo cp -v ./Users-ned-dotbash_profile "${SKEL}"/.bash_profile
